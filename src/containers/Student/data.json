@@ -1,0 +1,30 @@
+{
+  "columns": [
+    {
+      "id": "name",
+      "label": "Name",
+      "type": "urlBtn"
+    },
+    {
+      "id": "surname",
+      "label": "Surname"
+    },
+    {
+      "id": "email",
+      "label": "Email Id"
+    },
+    {
+      "id": "dob",
+      "label": "Birth Date"
+    },
+    {
+      "id": "projectNumber",
+      "label": "Projects"
+    },
+    {
+      "id": "action",
+      "label": "Action",
+      "type": "actionBtn"
+    }
+  ]
+}
