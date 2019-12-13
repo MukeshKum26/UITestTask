@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
-import Student from './containers/Student'
-import Projects from './containers/Projects'
+import Student from './containers/Student/StudentList'
+import Projects from './containers/Projects/ProjectsList'
 import rootReducers from './redux-saga/reducers'
 import sagas from './redux-saga/saga'
 

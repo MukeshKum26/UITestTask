@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import TableComponent from '../../components/Table'
-import { fetchProjectList, deleteProject } from '../../redux-saga/actions/projectsList'
+import TableComponent from '../../../components/Table'
+import { fetchProjectList, deleteProject } from '../../../redux-saga/actions/projectsList'
 import { columns } from './data'
 
 class ProjectsList extends Component {
