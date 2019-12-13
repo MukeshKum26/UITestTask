@@ -1,10 +1,11 @@
 import React from 'react'
-import Student from './containers/Student'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
+import Student from './containers/Student'
+import Projects from './containers/Projects'
 import rootReducers from './redux-saga/reducers'
 import sagas from './redux-saga/saga'
 
@@ -18,8 +19,8 @@ function App() {
       <Router>
         <Switch>
           <React.Fragment>
-            <Route exact path='/student/:id' component={Student}/>
-            <Route exact path="/students" component={ Student }/>
+            <Route exact path='/projects' component={Projects}/>
+            <Route exact path="/students" component={Student}/>
           </React.Fragment>
         </Switch>
       </Router>

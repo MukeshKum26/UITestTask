@@ -5,7 +5,6 @@ import TableRow from '@material-ui/core/TableRow'
 import { Button, Link } from '@material-ui/core'
 
 const TableBodyComponent = ({ items, columns }) => {
-  console.log("ooooooooooooooooooooooooooooo", items)
   const rowMapper = useCallback((rowItem, column) => {
     if (column.type === 'actionBtn') {
       return (
@@ -27,6 +26,7 @@ const TableBodyComponent = ({ items, columns }) => {
       </>
     )
   }, [])
+
   return (
     <TableBody>
       { items.map(row => (
