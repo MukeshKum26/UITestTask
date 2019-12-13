@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Student from './containers/Student'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+
+import rootReducers from './redux-saga/reducers'
+import sagas from './redux-saga/saga'
+
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore( rootReducers, applyMiddleware( sagaMiddleware ) )
+sagaMiddleware.run( sagas )
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <React.Fragment>
+            <Route exact path='/student/:id' component={Student}/>
+            <Route exact path="/students" component={ Student }/>
+          </React.Fragment>
+        </Switch>
+      </Router>
+    </Provider>
+  )
 }
 
 export default App;
