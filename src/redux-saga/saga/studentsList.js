@@ -3,10 +3,13 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import {
   FETCH_STUDENTS_LIST,
   FETCH_STUDENTS_LIST_SUCCESS,
-  FETCH_STUDENTS_LIST_FAILURE
+  FETCH_STUDENTS_LIST_FAILURE,
+  DELETE_STUDENT,
+  DELETE_STUDENT_SUCCESS,
+  DELETE_STUDENT_FAILURE
 } from '../actions/type'
 
-import { getStudendsList } from '../../utils/Apiclient'
+import { getStudendsList, deleteStudent } from '../../utils/Apiclient'
 
 function * studentListWorker () {
   try {
@@ -19,6 +22,16 @@ function * studentListWorker () {
 
 function * studentListWatcher () {
   yield takeLatest(FETCH_STUDENTS_LIST, studentListWorker)
+  yield takeLatest(DELETE_STUDENT, deleteStudentWorker)
+}
+
+function * deleteStudentWorker ({ id }) {
+  try {
+      yield call(deleteStudent, id)
+      yield put({ type: DELETE_STUDENT_SUCCESS, id })
+  } catch (error) {
+    yield put({ type: DELETE_STUDENT_FAILURE })
+  }
 }
 
 export default studentListWatcher

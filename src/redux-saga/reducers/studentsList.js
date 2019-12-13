@@ -1,7 +1,8 @@
 import {
   FETCH_STUDENTS_LIST,
   FETCH_STUDENTS_LIST_SUCCESS,
-  FETCH_STUDENTS_LIST_FAILURE
+  FETCH_STUDENTS_LIST_FAILURE,
+  DELETE_STUDENT_SUCCESS
 } from '../actions/type'
 
 const initialState = {
@@ -31,6 +32,19 @@ const studentsListReducer = ( state = initialState, action ) => {
         error: true,
         loading: false
       }
+      case DELETE_STUDENT_SUCCESS:
+        const { id } = action
+        const studentIndex = ((state && state.result) || []).findIndex(
+          item => item.id === id)
+        if (studentIndex < 0) return state
+        return {
+          ...state,
+          isFetching: false,
+          result: [
+            ...state.result.slice(0, studentIndex),
+            ...state.result.slice(studentIndex + 1)
+          ]
+        }
     default: return state
   }
 }
