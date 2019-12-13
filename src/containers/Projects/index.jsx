@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import TableComponent from '../../components/Table'
-import { fetchProjectList } from '../../redux-saga/actions/projectsList'
+import { fetchProjectList, deleteProject } from '../../redux-saga/actions/projectsList'
 import { columns } from './data'
 
 class ProjectsList extends Component {
@@ -11,9 +11,7 @@ class ProjectsList extends Component {
     getProjects()
   }
 
-  handleDelete = (id) => {
-    console.log("asdasdasdasd", id)
-  }
+  handleDelete = id => this.props.removeProject(id)
 
   dataFormatter = (rows) => (
     rows.map(row => ({
@@ -54,7 +52,8 @@ class ProjectsList extends Component {
 }
 
 const mapDispatchToProps = dispatch => ( {
-  getProjects: () => dispatch(fetchProjectList())
+  getProjects: () => dispatch(fetchProjectList()),
+  removeProject: id => dispatch(deleteProject(id))
 } )
 
 const mapStateToProps = ({ projectsList }) => ({

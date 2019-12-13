@@ -1,7 +1,8 @@
 import {
   FETCH_PROJECTS_LIST,
   FETCH_PROJECTS_LIST_SUCCESS,
-  FETCH_PROJECTS_LIST_FAILURE
+  FETCH_PROJECTS_LIST_FAILURE,
+  DELETE_PROJECT_SUCCESS
 } from '../actions/type'
 
 const initialState = {
@@ -31,6 +32,19 @@ const projectsListReducer = ( state = initialState, action ) => {
         error: true,
         loading: false
       }
+      case DELETE_PROJECT_SUCCESS:
+        const { id } = action
+        const projectIndex = ((state && state.result) || []).findIndex(
+          item => item.id === id)
+        if (projectIndex < 0) return state
+        return {
+          ...state,
+          isFetching: false,
+          result: [
+            ...state.result.slice(0, projectIndex),
+            ...state.result.slice(projectIndex + 1)
+          ]
+        }
     default: return state
   }
 }
