@@ -1,0 +1,28 @@
+{
+  "columns": [
+    {
+      "id": "name",
+      "label": "Name",
+      "type": "urlBtn"
+    },
+    {
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "id": "repoUrl",
+      "label": "Repo Url",
+      "type": "urlBtn"
+    },
+    {
+      "id": "liveUrl",
+      "label": "Live Url",
+      "type": "urlBtn"
+    },
+    {
+      "id": "action",
+      "label": "Action",
+      "type": "actionBtn"
+    }
+  ]
+}
