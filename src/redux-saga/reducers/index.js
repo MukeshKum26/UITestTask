@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import studentList from './studentsList'
-import projectsList from './projectsList'
+import student from './students'
+import projects from './projects'
 
 const rootReducer = combineReducers({
-  studentList,
-  projectsList
+  student,
+  projects
 })
 
 export default rootReducer

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import TableComponent from '../../../components/Table'
-import { fetchStudentList, deleteStudent } from '../../../redux-saga/actions/studentsList'
+import { fetchStudentList, deleteStudent } from '../../../redux-saga/actions/students'
 import { columns } from './data'
 
 class Student extends Component {

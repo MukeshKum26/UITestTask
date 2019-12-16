@@ -1,11 +1,11 @@
 import { all } from 'redux-saga/effects'
 
-import studentList from './studentsList'
-import projectsList from './projectsList'
+import student from './students'
+import projects from './projects'
 
 export default function* sagas() {
   yield all([
-    studentList(),
-    projectsList()
+    student(),
+    projects()
   ])
 }
