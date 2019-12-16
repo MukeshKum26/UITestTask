@@ -3,7 +3,6 @@ import {
   FETCH_STUDENTS_LIST_SUCCESS,
   FETCH_STUDENTS_LIST_FAILURE,
   DELETE_STUDENT_SUCCESS,
-  ADD_STUDENT,
 } from '../actions/type'
 
 const initialState = {
@@ -12,8 +11,8 @@ const initialState = {
   error: null
 }
 
-const studentsListReducer = ( state = initialState, action ) => {
-  switch( action.type ) {
+const studentsListReducer = (state = initialState, action) => {
+  switch (action.type) {
     case FETCH_STUDENTS_LIST:
       return {
         ...state,
@@ -33,19 +32,19 @@ const studentsListReducer = ( state = initialState, action ) => {
         error: true,
         loading: false
       }
-      case DELETE_STUDENT_SUCCESS:
-        const { id } = action
-        const studentIndex = ((state && state.result) || []).findIndex(
-          item => item.id === id)
-        if (studentIndex < 0) return state
-        return {
-          ...state,
-          isFetching: false,
-          result: [
-            ...state.result.slice(0, studentIndex),
-            ...state.result.slice(studentIndex + 1)
-          ]
-        }
+    case DELETE_STUDENT_SUCCESS:
+      const { id } = action
+      const studentIndex = ((state && state.result) || []).findIndex(
+        item => item.id === id)
+      if (studentIndex < 0) return state
+      return {
+        ...state,
+        isFetching: false,
+        result: [
+          ...state.result.slice(0, studentIndex),
+          ...state.result.slice(studentIndex + 1)
+        ]
+      }
     default: return state
   }
 }
