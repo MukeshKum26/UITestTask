@@ -1,0 +1,25 @@
+{
+  "fields": [
+    {
+      "id": "name",
+      "label": "Name"
+    },
+    {
+      "id": "surname",
+      "label": "Surname"
+    },
+    {
+      "id": "email",
+      "label": "Email Id"
+    },
+    {
+      "id": "dob",
+      "label": "Birth Date",
+      "type": "date"
+    },
+    {
+      "id": "projectNumber",
+      "label": "Number of Projects"
+    }
+  ]
+}
