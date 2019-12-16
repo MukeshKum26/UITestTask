@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 
 import Student from './containers/Student/StudentList'
 import Projects from './containers/Projects/ProjectsList'
+import StudentDetails from './containers/Student/StudentDetails'
 import rootReducers from './redux-saga/reducers'
 import sagas from './redux-saga/saga'
 
@@ -21,6 +22,8 @@ function App() {
           <React.Fragment>
             <Route exact path='/projects' component={Projects}/>
             <Route exact path="/students" component={Student}/>
+            <Route exact path="/student/:id" component={StudentDetails} />
+            <Route exact path="/students/create" component={StudentDetails} />
           </React.Fragment>
         </Switch>
       </Router>

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Button } from '@material-ui/core'
+import { withStyles } from '@material-ui/core'
+import { withRouter } from 'react-router-dom'
 
+import styles from './styles'
 import TableComponent from '../../../components/Table'
 import { fetchStudentList, deleteStudent } from '../../../redux-saga/actions/students'
 import { columns } from './data'
@@ -28,11 +32,27 @@ class Student extends Component {
   )
 
   render() {
-    const { studentList: { err, result } } = this.props
+    const { student: { err, result }, classes, history: { push } } = this.props
     const rows = this.dataFormatter( result )
-    if (result && result.length > 0) {
+    if (result && result.length >= 0) {
       return (
-        <TableComponent items={rows} columns={columns} />
+        <div className={classes.rootDiv}>
+          <Button
+            onClick={() => push('/students/create')}
+            className={classes.btnMargin}
+            variant="outlined"
+            color="primary">
+              Add Student
+          </Button>
+          <Button
+            onClick={() => push('/projects')}
+            variant="outlined"
+            color="secondary">
+              Go To Projects
+          </Button>
+          <TableComponent items={rows} columns={columns} />
+        </div>
+        
       )
     } else if (err) {
       return <div> Error </div>
@@ -48,8 +68,8 @@ const mapDispatchToProps = dispatch => ( {
   removeStudent: id => dispatch(deleteStudent(id))
 } )
 
-const mapStateToProps = ({ studentList }) => ({
-  studentList
+const mapStateToProps = ({ student }) => ({
+  student
 })
 
-export default connect( mapStateToProps, mapDispatchToProps )(Student)
+export default withRouter(connect( mapStateToProps, mapDispatchToProps )(withStyles(styles)(Student)))

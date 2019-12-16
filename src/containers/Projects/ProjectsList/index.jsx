@@ -36,9 +36,9 @@ class ProjectsList extends Component {
   )
 
   render() {
-    const { projectsList: { err, result } } = this.props
+    const { projects: { err, result } } = this.props
     const rows = this.dataFormatter( result )
-    if (result && result.length > 0) {
+    if (result && result.length >= 0) {
       return (
         <TableComponent items={rows} columns={columns} />
       )
@@ -56,8 +56,8 @@ const mapDispatchToProps = dispatch => ( {
   removeProject: id => dispatch(deleteProject(id))
 } )
 
-const mapStateToProps = ({ projectsList }) => ({
-  projectsList
+const mapStateToProps = ({ projects }) => ({
+  projects
 })
 
 export default connect( mapStateToProps, mapDispatchToProps )(ProjectsList)
