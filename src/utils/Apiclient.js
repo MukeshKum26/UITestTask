@@ -1,15 +1,17 @@
 import { getData, postData, deleteData, putData } from './axios'
 
-export const getStudendsList = () => getData('http://localhost:12345/api/v1/student') //env
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL
 
-export const deleteStudent = id => deleteData(`http://localhost:12345/api/v1/student/${id}`)
+export const getStudendsList = () => getData(`${REACT_BASE_URL}/student`) //env
 
-export const getProjectsList = () => getData('http://localhost:12345/api/v1/projects') //env
+export const deleteStudent = id => deleteData(`${REACT_BASE_URL}/student/${id}`)
 
-export const deleteProject = id => deleteData(`http://localhost:12345/api/v1/projects/${id}`)
+export const getProjectsList = () => getData(`${REACT_BASE_URL}/projects`) //env
 
-export const getStudentDetails = id => getData(`http://localhost:12345/api/v1/student/${id}`)
+export const deleteProject = id => deleteData(`${REACT_BASE_URL}/projects/${id}`)
 
-export const addStudentDetails = data => postData(`http://localhost:12345/api/v1/student/`, data)
+export const getStudentDetails = id => getData(`${REACT_BASE_URL}/student/${id}`)
 
-export const updateStudentDetails = data => putData(`http://localhost:12345/api/v1/student/${data.id}`, data)
+export const addStudentDetails = data => postData(`${REACT_BASE_URL}/student/`, data)
+
+export const updateStudentDetails = data => putData(`${REACT_BASE_URL}/student/${data.id}`, data)
